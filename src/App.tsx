@@ -16,7 +16,10 @@ function App() {
 
   useEffect(() => {
     if(!socketRef.current){
-      const socket = io(API_URL);
+      const socket = io(API_URL, {
+        transports: ["websocket"],
+        secure: true
+      });
       socketRef.current = socket;
     }
     const socket = socketRef.current;
